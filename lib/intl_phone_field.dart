@@ -344,7 +344,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
             ],
           ),
         ),
-        onTap: (widget.bDisableOnTap ?? true) ? _changeCountry : null,
+        onTap: (widget.bDisableOnTap ?? false) ? null : _changeCountry,
       ),
     );
   }
