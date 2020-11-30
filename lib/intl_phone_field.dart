@@ -11,6 +11,8 @@ class IntlPhoneField extends StatefulWidget {
   final TextAlign textAlign;
   final VoidCallback onTap;
 
+  final bool bDisableOnTap;
+
   /// {@macro flutter.widgets.editableText.readOnly}
   final bool readOnly;
   final FormFieldSetter<PhoneNumber> onSaved;
@@ -138,32 +140,34 @@ class IntlPhoneField extends StatefulWidget {
 
   TextInputAction textInputAction;
 
-  IntlPhoneField(
-      {this.initialCountryCode,
-      this.obscureText = false,
-      this.textAlign = TextAlign.left,
-      this.onTap,
-      this.readOnly = false,
-      this.initialValue,
-      this.keyboardType = TextInputType.number,
-      this.autoValidate = true,
-      this.controller,
-      this.focusNode,
-      this.decoration,
-      this.style,
-      this.onSubmitted,
-      this.validator,
-      this.onChanged,
-      this.onSaved,
-      this.showDropdownIcon = true,
-      this.dropdownDecoration = const BoxDecoration(),
-      this.inputFormatters,
-      this.enabled = true,
-      this.keyboardAppearance = Brightness.light,
-      this.searchText = 'Search by Country Name',
-      this.countryCodeTextColor,
-      this.dropDownArrowColor,
-      this.textInputAction});
+  IntlPhoneField({
+    this.initialCountryCode,
+    this.obscureText = false,
+    this.textAlign = TextAlign.left,
+    this.onTap,
+    this.readOnly = false,
+    this.initialValue,
+    this.keyboardType = TextInputType.number,
+    this.autoValidate = true,
+    this.controller,
+    this.focusNode,
+    this.decoration,
+    this.style,
+    this.onSubmitted,
+    this.validator,
+    this.onChanged,
+    this.onSaved,
+    this.showDropdownIcon = true,
+    this.dropdownDecoration = const BoxDecoration(),
+    this.inputFormatters,
+    this.enabled = true,
+    this.keyboardAppearance = Brightness.light,
+    this.searchText = 'Search by Country Name',
+    this.countryCodeTextColor,
+    this.dropDownArrowColor,
+    this.textInputAction,
+    this.bDisableOnTap,
+  });
 
   @override
   _IntlPhoneFieldState createState() => _IntlPhoneFieldState();
@@ -340,7 +344,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
             ],
           ),
         ),
-        onTap: _changeCountry,
+        onTap: (widget.bDisableOnTap ?? true) ? _changeCountry : null,
       ),
     );
   }
