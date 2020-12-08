@@ -186,9 +186,11 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       _selectedCountry = countries
           .firstWhere((item) => item['code'] == widget.initialCountryCode);
     }
-    validator = widget.autoValidate
-        ? (value) => value.length != 10 ? 'Invalid Mobile Number' : null
-        : widget.validator;
+    if (validator == null) {
+      validator = widget.autoValidate
+          ? (value) => value.length != 10 ? 'Invalid Mobile Number' : null
+          : widget.validator;
+    }
   }
 
   Future<void> _changeCountry() async {
