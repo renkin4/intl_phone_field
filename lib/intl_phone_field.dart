@@ -326,7 +326,8 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              if (widget.showDropdownIcon) ...[
+              if (widget.showDropdownIcon &&
+                  !(widget.bDisableOnTap ?? false)) ...[
                 Icon(
                   Icons.arrow_drop_down,
                   color: widget.dropDownArrowColor,
